@@ -15,6 +15,6 @@ public class DemoApplication {
 
     @RequestMapping("")
     public String hello(){
-        return "hello world";
+        return "《《《hello world》》》";
     }
 }
