@@ -43,15 +43,43 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            <!-- <plugin>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-maven-plugin</artifactId>
+             </plugin>
+             <plugin>
+                 <groupId>external.atlassian.jgitflow</groupId>
+                 <artifactId>jgitflow-maven-plugin</artifactId>
+                 <version>1.0-m3</version>
+                 <configuration>
+                     &lt;!&ndash; see goals wiki page for configuration options &ndash;&gt;
+                     <flowInitContext>
+                         <masterBranchName>master</masterBranchName>
+                         <developBranchName>develop</developBranchName>
+                         <featureBranchPrefix>feature-</featureBranchPrefix>
+                         <releaseBranchPrefix>release-</releaseBranchPrefix>
+                         <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+                         <versionTagPrefix>loan-</versionTagPrefix>
+                     </flowInitContext>
+                     <username>854731306@qq.com</username>
+                     <password>Spring2018418</password>
+                 </configuration>
+             </plugin>-->
             <plugin>
                 <groupId>external.atlassian.jgitflow</groupId>
                 <artifactId>jgitflow-maven-plugin</artifactId>
-                <version>1.0-m3</version>
+                <version>1.0-m5.1</version>
                 <configuration>
+                    <localOnly>false</localOnly>
+                    <pushFeatures>true</pushFeatures><!--是否在feature start 之后将分支推送到远程仓库-->
+                    <pushReleases>true</pushReleases><!--是否在release start 之后将分支推送到远程仓库-->
+                    <pushHotfixes>true</pushHotfixes><!--是否在hotfix start 之后将分支推送到远程仓库-->
+                    <squash>false</squash>
+                    <allowSnapshots>true</allowSnapshots>
+                    <goals>clean</goals>
+                    <noHotfixBuild>true</noHotfixBuild><!--是否在feature期间build项目-->
+                    <noFeatureBuild>true</noFeatureBuild>
+                    <noReleaseBuild>true</noReleaseBuild>
                     <!-- see goals wiki page for configuration options -->
                     <flowInitContext>
                         <masterBranchName>master</masterBranchName>
@@ -63,6 +91,14 @@
                     </flowInitContext>
                     <username>854731306@qq.com</username>
                     <password>Spring2018418</password>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!--版本号管理插件-->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>
         </plugins>
