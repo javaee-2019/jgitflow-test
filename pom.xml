@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.tima.test</groupId>
     <artifactId>tima-test</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
     <name>tima-test</name>
     <description>test project for TIMA</description>
 
