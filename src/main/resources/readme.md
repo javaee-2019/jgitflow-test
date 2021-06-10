@@ -26,4 +26,19 @@ mvn jgitflow:hotfix-start
 
 mvn jgitflow:hotfix-finish
 
+
+加强版:
+mvn jgitflow:feature-start -DallowSnapshots=true          ：DallowSnapshots 参数不给会报错。
+
+mvn jgitflow:feature-finish -DallowSnapshots=true -Dmaven.test.skip=true      需要加-D频闭测试阶段
+
+mvn jgitflow:release-start -DallowSnapshots=true -DautoVersionSubmodules=true -Dmaven.test.skip=true
+
+mvn jgitflow:release-finish -DallowSnapshots=true -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
+
+-DallowSnapshots=true:是指允许在release finish时，在pom中包含为SNAPSHOT的依赖包。
+
+如果编译报javadoc插件注解异常，则加该参数解决-Dmaven.javadoc.skip=true
+
+mvn jgitflow:release-start -DallowSnapshots=true -DautoVersionSubmodules=true -Dmaven.test.skip=true
 ```
