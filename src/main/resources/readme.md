@@ -14,6 +14,8 @@ master->拉取hotfix分支修补bug->修改完毕 finish
 
 ###常用命令
 ```
+简化版: 
+
 mvn jgitflow:feature-start
 
 mvn jgitflow:feature-finish
@@ -26,4 +28,32 @@ mvn jgitflow:hotfix-start
 
 mvn jgitflow:hotfix-finish
 
+复杂一点的: 
+
+mvn jgitflow:feature-start -DallowSnapshots=true          ：DallowSnapshots 参数不给会报错。
+
+mvn jgitflow:feature-finish -DallowSnapshots=true -Dmaven.test.skip=true      需要加-D频闭测试阶段
+
+mvn jgitflow:release-start -DallowSnapshots=true -DautoVersionSubmodules=true -Dmaven.test.skip=true
+
+mvn jgitflow:release-finish -DallowSnapshots=true -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
+
+-DallowSnapshots=true:是指允许在release finish时，在pom中包含为SNAPSHOT的依赖包。
+
+如果编译报javadoc插件注解异常，则加该参数解决-Dmaven.javadoc.skip=true
+
+mvn jgitflow:release-start -DallowSnapshots=true -DautoVersionSubmodules=true -Dmaven.test.skip=true
+
+
+远程查看tag，已经全部删除了，分支也不存在release，但是release start时，说还存在分支，这时需要查看本地tag是否存在。
+
+git tag  ：查看本地tag
+
+git tag -d tagName：删除指定名称的tag
+
+git tag |grep "0.0.*" |xargs git tag -d：批量删除tag
+
+然后就可以进行release start了。
+
 ```
+
